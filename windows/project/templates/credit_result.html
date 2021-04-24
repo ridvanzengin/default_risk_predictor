@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+<script src="https://kit.fontawesome.com/c2218af655.js" crossorigin="anonymous"></script>
+<article class="media content-section">
+    <div class="media-body">
+      <h5><b>Prediction Result </b></h5>
+        <div class="article-metadata"></div>  
+            <div class = "mt-3"></div>
+                <p><i class="fas fa-circle"style=" margin-right:7px ;color:#F7464A;"></i>Default Risk </p> 
+                <div style = "text-align:center;">
+                  <canvas id="chart" width="200" height="200"style="align:'center' ;"></canvas>
+                  
+                </div>
+            </div>
+            
+  </article>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+          
+  <script>
+    var pieData = [
+      {% for item, label, colors in set %}
+        {
+          value: {{item}},
+          label: "{{label}}",
+          color : "{{colors}}",
+          labelColor: 'white',
+          labelFontSize: '16'
+        },
+      {% endfor %}
+    ];
+
+    var optionsPie = {
+        tooltipEvents: [],
+        showTooltips: true,
+        onAnimationComplete: function() {
+            this.showTooltip(this.segments, true);
+        },
+        tooltipTemplate: " <%= value %>"
+    }
+
+    // draw pie chart
+    new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData,optionsPie);
+
+  </script>
+  
+
+
+
+{% endblock content %}

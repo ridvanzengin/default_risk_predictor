@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<script src="https://kit.fontawesome.com/c2218af655.js" crossorigin="anonymous"></script>
+<article class="media content-section">
+    <div class="media-body">
+      <h5><b>Credit Default Risk Predictor </b></h5>
+        <div class="article-metadata"></div>  
+            <div class = "mt-3"></div>
+                <p><i class="fas fa-star"style=" margin-right:7px ;"></i>It predicts the default risk ratio for customers using 717 different indicators. Auc score: %79 </p> 
+            </div>
+  </article> 
+<div class="content-section">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="form-group">
+                {{ form.customer_id.label(class="form-control-label") }}
+
+                {{ form.customer_id(class="form-control form-control-lg") }}
+
+                <div class = "mt-3"></div>
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-info ") }}
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+
+{% endblock content %}
